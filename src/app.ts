@@ -1,12 +1,10 @@
-import express from 'express';
+require('dotenv').config(); 
+import { environment } from './configuration/environment';
+import server from './server/index';
 
-const PORT = process.env.PORT || 3000;
-const server = express();
 
-server.get("/", (req, res) => {
-    res.send("hola mundo")
-})
 
-server.listen(PORT, () => {
-    console.log(`Servidor a la escucha en puerto ${PORT}`)
-})
+const PORT = environment.PORT;
+
+
+server.listen(PORT, () => console.log(`Server listening at http://localhost:${PORT}`));
